@@ -1,8 +1,13 @@
 package org.example;
 
-public class Main {
+import java.awt.*;
+
+public class Main
+{
     public static void main(String[] args)
     {
-        new GameWindow();
+
+       new MainWindow();
     }
+
 }

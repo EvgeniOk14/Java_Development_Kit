@@ -1,0 +1,16 @@
+Курс: Development Kit
+
+Домашняя работа № 1
+
+https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_1 - ссылка на все задачи ДЗ №1
+
+1) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_1/dz1/src/main/java/org/example - игра крестики нолики  3*3
+
+2) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_1/dz1_2/src/main/java/org/example - игра крестики нолики для люього поля и разных режимов игры
+
+3) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_1/dz1_3_server/src/main/java/org/example  - реализация кнопок запуска  /остановки сервера
+
+4) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_1/dz1_4_chat/src/main/java/org/example - реализация чата, с функциями записи истории чата в файл и загрузки истории из файла в чат
+
+Выполнил: Е.В.Окишев
+

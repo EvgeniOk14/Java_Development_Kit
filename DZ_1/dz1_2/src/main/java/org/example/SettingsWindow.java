@@ -83,7 +83,12 @@ public class SettingsWindow extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                gameWindow.map.startNewGame(0,3,3,3); // вызов метода: startNewGame из Класса Map()
+                int gameMode = HumanVsAi.isSelected() ? 0 : 1;
+                if (!HumanVsAi.isSelected() && HumanVsHuman.isSelected()) {
+                    gameMode = 1; // Если выбрана HumanVsHuman, устанавливаем режим игры в 1
+                }
+                gameWindow.map.endGame(); // Сбрасываем переменные перед новой игрой
+                gameWindow.map.startNewGame(gameMode, field.getValue(),field.getValue(),winLength.getValue()); // вызов метода: startNewGame из Класса Map()
             }
         });
     }

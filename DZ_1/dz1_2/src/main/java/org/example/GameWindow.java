@@ -16,7 +16,7 @@ public class GameWindow extends JFrame {
     JButton btrEnd  = new JButton("Exit");
     GameWindow()
     {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // метод, который устанавливает операцию закрытия окна при закрытии его пользователем
         setLocation(WINDOW_POSX, WINDOW_POSY);
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("TicTacToy");
@@ -30,16 +30,23 @@ public class GameWindow extends JFrame {
         add(map);
         setVisible(true);
 
+
+
         settings = new SettingsWindow(this);
-        btrEnd.addActionListener(new ActionListener() {
+
+        btrEnd.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 System.exit(0);
             }
         });
-        btnStart.addActionListener(new ActionListener() {
+        btnStart.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 settings.setVisible(true);
             }
         });

@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class MainCanvas  extends JPanel
 {
-//    private final CanvasRepaintListener controller;
     private MainWindow controller;
     private long lastFrameTime; // текущее время
 

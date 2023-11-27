@@ -7,6 +7,9 @@ import java.awt.event.MouseEvent;
 import java.util.Random;
 
 public class Map extends JPanel {
+    private int currentPlayer;
+    private int gameMode;
+    private boolean isHumanTurn = true;
     private static final Random RANDOM = new Random();
     private final int DOT_PADDING = 10;
     private int gameOverType;
@@ -42,7 +45,7 @@ public class Map extends JPanel {
         isInitialized = false;
     }
 
-    private void update(MouseEvent e) {
+    private void update(MouseEvent e) { //человек против компьютера
         if (isGameOver || !isInitialized) return;
         int cellX = e.getX() / cellWidth;
         int cellY = e.getY() / cellHeight;
@@ -55,6 +58,79 @@ public class Map extends JPanel {
         repaint();
         if (checkEndGame(AI_DOT, STATE_WIN_AI)) return;
     }
+
+//    private void update(MouseEvent e) {  // человек против человека
+//        if (isGameOver || !isInitialized) return;
+//        int cellX = e.getX() / cellWidth;
+//        int cellY = e.getY() / cellHeight;
+//
+//        System.out.printf("x=%d, y=%d\n", cellX, cellY);
+//        if (!isValidCell(cellX, cellY) || !isEmptyCell(cellX, cellY)) return;
+//
+//        int currentPlayerDot = isHumanTurn ? HUMAN_DOT : AI_DOT;
+//        field[cellY][cellX] = currentPlayerDot;
+//
+//        if (checkEndGame(currentPlayerDot, isHumanTurn ? STATE_WIN_HUMAN : STATE_WIN_AI)) return;
+//
+//        isHumanTurn = !isHumanTurn; // Переключаем флаг на следующий ход
+//
+//        repaint();
+//    }
+
+//    private void update(MouseEvent e) {
+//        if (isGameOver || !isInitialized) return;
+//        int cellX = e.getX() / cellWidth;
+//        int cellY = e.getY() / cellHeight;
+//
+//        System.out.printf("x=%d, y=%d\n", cellX, cellY);
+//        if (!isValidCell(cellX, cellY) || !isEmptyCell(cellX, cellY)) return;
+//
+//        int currentPlayerDot = isHumanTurn ? HUMAN_DOT : AI_DOT;
+//        field[cellY][cellX] = currentPlayerDot;
+//
+//        if (checkEndGame(currentPlayerDot, isHumanTurn ? STATE_WIN_HUMAN : STATE_WIN_AI)) return;
+//
+//        if (gameMode == 0) {
+//            isHumanTurn = !isHumanTurn; // Переключаем флаг на следующий ход
+//        } else {
+//            aiTurn(); // Если режим игры с компьютером, вызываем ход компьютера сразу после хода человека
+//            if (checkEndGame(AI_DOT, STATE_WIN_AI)) return;
+//        }
+//
+//        repaint();
+//    }
+//private void update(MouseEvent e) {
+//    if (isGameOver || !isInitialized) return;
+//    int cellX = e.getX() / cellWidth;
+//    int cellY = e.getY() / cellHeight;
+//
+//    System.out.printf("x=%d, y=%d\n", cellX, cellY);
+//    if (!isValidCell(cellX, cellY) || !isEmptyCell(cellX, cellY)) return;
+//
+//    if (currentPlayer == HUMAN_DOT) {
+//        field[cellY][cellX] = HUMAN_DOT;
+//    } else {
+//        field[cellY][cellX] = AI_DOT;
+//    }
+//
+//    int currentPlayerDot = (currentPlayer == HUMAN_DOT) ? HUMAN_DOT : AI_DOT;
+//    int gameOverType = (currentPlayer == HUMAN_DOT) ? STATE_WIN_HUMAN : STATE_WIN_AI;
+//
+//    if (checkEndGame(currentPlayerDot, gameOverType)) return;
+//
+//    // Переключаем игрока
+//    currentPlayer = (currentPlayer == HUMAN_DOT) ? AI_DOT : HUMAN_DOT;
+//
+//    if (currentPlayer == AI_DOT) {
+//        aiTurn(); // Если ход компьютера, вызываем его
+//        int aiPlayerDot = AI_DOT;
+//        if (checkEndGame(aiPlayerDot, STATE_WIN_AI)) return;
+//    }
+//
+//    repaint();
+//}
+
+
 
     private boolean checkEndGame(int dot, int gameOverType) {
         if (checkWin(dot)) {
@@ -256,4 +332,8 @@ public class Map extends JPanel {
         return true;
     }
 
+    void endGame() {
+        isGameOver = false;
+        isInitialized = false;
+    }
 }
