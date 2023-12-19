@@ -1,0 +1,105 @@
+Создайте два потока A и B. 
+Поток A меняет значение Boolean переменной switcher с задержкой 1000 миллисекунд (true в состояние false и наоборот). 
+Поток B ожидает состояния true переменной switcher и выводит на консоль обратный отсчет от 100 с задержкой 100 миллисекунд и приостанавливает свое действие, как только поток A переключит switcher в состояние false. 
+Условием завершения работы потоков является достижение отсчета нулевой отметки.
+
+
+
+3 бегуна должны прийти к старту гонки
+Программа должна гарантировать, что гонка начнется только когда все три участника будут на старте
+Программа должна отсчитать “На старт”, “Внимание”, “Марш”
+Программа должна завершиться когда все участники закончат гонку.
+
+
+Есть пять философов (потоки), которые могут либо обедать либо размышлять.
+Каждый философ должен пообедать три раза. Каждый прием пищи длиться 500 миллисекунд
+После каждого приема пищи философ должен размышлять 
+Не должно возникнуть общей блокировки
+Философы не должны есть больше одного раза подряд
+
+
+
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+
+public class Program3 {
+    public static void main(String[] args) throws InterruptedException {
+        CountDownLatch allStart = new CountDownLatch(3);
+        CountDownLatch startRace = new CountDownLatch(1);
+        Thread runnerThread1 = new Thread(new Runner(allStart, startRace));
+        Thread runnerThread2 = new Thread(new Runner(allStart, startRace));
+        Thread runnerThread3 = new Thread(new Runner(allStart, startRace));
+        runnerThread1.start();
+        runnerThread2.start();
+        runnerThread3.start();
+        System.out.println("Ждем бегунов на старте...");
+        allStart.await();
+        System.out.println("Все пришли...");
+        System.out.println("НАСТАРТ! ВНИМАНИЕ! МАРШ!");
+        startRace.countDown();
+        runnerThread1.join();
+        runnerThread2.join();
+        runnerThread3.join();
+        System.out.println("Гонка завершена");
+    }
+
+    static class Runner implements Runnable {
+        CountDownLatch readyToStart;
+        CountDownLatch raceStart;
+
+        public Runner(CountDownLatch readyToStart, CountDownLatch raceStart) {
+            this.raceStart = raceStart;
+            this.readyToStart = readyToStart;
+        }
+
+        @Override
+        public void run() {
+            try {
+                System.out.println("Иду на старт..." + Thread.currentThread().getName());
+                Thread.sleep(new Random().nextInt(500, 2000));
+                readyToStart.countDown();
+                raceStart.await();
+                System.out.println("Бегу..." + Thread.currentThread().getName());
+                Thread.sleep(new Random().nextInt(3000, 5000));
+                System.out.println("Прибежал!" + Thread.currentThread().getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
+
+
+public class Task2 {
+    static boolean switcher = false;
+    static int count = 100;
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread switcherThread = new Thread(() -> {
+
+            try {
+                switcher = !switcher;
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Switcher thread was interrupted");
+            }
+        });
+
+        Thread counterThread = new Thread(() -> {
+            while (count > 0) {
+                while (!switcher) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                System.out.println(count--);
+            }
+        });
+        switcherThread.start();
+        counterThread.start();
+        switcherThread.join();
+        counterThread.join();
+
+    }

@@ -1,0 +1,28 @@
+Курс: Java Development Kit
+
+Домашняя работа №3
+ 
+Домашнее задание из практики:
+
+https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3  - общая ссылка на все задания
+
+1) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ3_4_Iterator_of_Collection/src/main/java/org/example    
+ - ссылка на задание №1 (Итератор)
+
+
+2) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ3_3_calculator  - ссылка на задание № 2 (Обобщённый Калькулятор)
+
+3) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ3_5_compareArrays - ссылка на задание № 3 (метод compareArrays())
+
+4)  https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ_3_6_Pair/src/main/java/org/example - ссылка на задание № 4 (обобщенный класс Pair,)
+
+
+Домашнее задание из лекции:
+
+5) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ3_1/src/main/java/org/example - ссылка на первое домашнее задание из лекции (замена двух элементов в массивах)
+
+6) https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ_3/DZ3_2/src/main/java/org/example - ссылка на второе домашнее задание из лекции (ящики с апельсинами и яблоками, их взвешивание и пересыпание из одной коробки в другую) 
+
+
+
+ Выполнил: Е.В.Окишев

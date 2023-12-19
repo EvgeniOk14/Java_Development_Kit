@@ -1,0 +1,7 @@
+Курс: Java Development Kit
+
+Домашняя работа № 4
+ 
+https://github.com/EvgeniOk14/Java_Development_Kit/tree/main/DZ4/src/main/java/org/example  - ссылка на задание
+
+ Выполнил: Е.В.Окишев
